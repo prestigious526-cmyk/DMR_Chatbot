@@ -48,3 +48,75 @@ The troubleshooting procedures are covered systematically by system layer and th
    * **Condition (Yes):** If the core power steps are valid but the screen remains unresponsive:
      * **Root Cause:** Display is Faulty.
      * **Action:** Check and validate the display assembly using a specialized test jig
+
+
+### PROCEDURE 2: BITE Check Matrix
+
+*Follow this procedure to check for the failure of any module via internal diagnostics.* 
+
+1. **Initial Setup & Initialization:**
+* 
+**Action:** Connect the battery to the Radio Set and connect the Antenna to the Radio. 
+
+
+* 
+**Action:** Switch on the Radio Set and then navigate to the menu list and select **iBITE**. 
+
+
+* **Next Step:** Proceed to step 2.
+
+
+2. **Baseband Layer Test:**
+* 
+**Condition:** Does the Display show **`BB:OK`**? 
+
+
+* 
+**If No:** * **Root Cause / Action:** In the Baseband card, reprogram the SCT. 
+
+
+* **If Yes:** Proceed to step 3.
+
+
+3. **Core Security Module (SM) Test:**
+* 
+**Condition:** Does the Display show **`R:1`**? 
+
+
+* 
+**If Yes:** * **Root Cause:** The RTC (Real-Time Clock) may be Faulty or the SPI flash may be faulty in the SM Card. 
+
+
+* **If No:** Proceed to step 4.
+
+
+4. **Logic & FPGA Test:**
+* 
+**Condition:** Does the Display show **`S:1`**? 
+
+
+* 
+**If Yes:** * **Root Cause:** The FPGA may be faulty in the SM card. 
+
+
+* **If No:** Proceed to step 5.
+
+
+5. **Frequency Synthesizer Test:**
+* 
+**Condition:** Does the Display show **`F:1`**? 
+
+
+* 
+**If Yes:** * **Root Cause / Action:** Check the RF path and reprogram the SCT. 
+
+
+* **If No:** Proceed to step 6.
+
+
+6. **Execution Verification:**
+* 
+**Condition:** Does the Display show **`RF:OK`**? 
+
+
+* **If Yes:** The built-in diagnostics check has passed with no active module faults detected.
